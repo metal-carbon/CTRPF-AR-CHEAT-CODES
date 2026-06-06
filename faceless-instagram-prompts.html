@@ -9,162 +9,204 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #0a0a0a;
-      color: #f0f0f0;
+      background: #f0f0f0;
       min-height: 100vh;
-      padding: 40px 20px 80px;
+      padding: 48px 20px 80px;
     }
 
     header {
       text-align: center;
-      margin-bottom: 56px;
+      margin-bottom: 48px;
     }
 
     header h1 {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: 700;
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 800;
+      color: #111;
       letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #f5c518 0%, #ff6b35 50%, #e91e8c 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     header p {
       color: #888;
-      font-size: 0.95rem;
-      max-width: 500px;
+      font-size: 0.9rem;
+      max-width: 460px;
       margin: 0 auto;
       line-height: 1.5;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 24px;
-      max-width: 1100px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+      max-width: 1080px;
       margin: 0 auto;
     }
 
+    /* ── Outer white card ── */
     .card {
-      background: #141414;
-      border: 1px solid #222;
-      border-radius: 16px;
-      padding: 28px 26px 24px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 24px 22px 22px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
+      gap: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
 
-    .card:hover {
-      border-color: #444;
-      transform: translateY(-2px);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .prompt-number {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #555;
-    }
-
-    .badge {
-      font-size: 0.65rem;
+    .prompt-label {
+      font-size: 0.88rem;
       font-weight: 600;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      padding: 3px 9px;
-      border-radius: 99px;
-      white-space: nowrap;
-      flex-shrink: 0;
+      color: #111;
     }
-
-    .card:nth-child(1) .badge { background: #1a1a2e; color: #7b8cde; border: 1px solid #2a2a4e; }
-    .card:nth-child(2) .badge { background: #1a2a1a; color: #6dde8c; border: 1px solid #2a4a2a; }
-    .card:nth-child(3) .badge { background: #2a1a1a; color: #de6d6d; border: 1px solid #4a2a2a; }
-    .card:nth-child(4) .badge { background: #1a2a2a; color: #6ddecc; border: 1px solid #2a4a4a; }
-    .card:nth-child(5) .badge { background: #2a2a1a; color: #dece6d; border: 1px solid #4a4a2a; }
-    .card:nth-child(6) .badge { background: #2a1a2a; color: #ce6dde; border: 1px solid #4a2a4a; }
 
     .card-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      line-height: 1.4;
-      color: #f0f0f0;
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.3;
+      color: #111;
+      letter-spacing: -0.3px;
     }
 
-    .prompt-box {
-      background: #0d0d0d;
-      border: 1px solid #1e1e1e;
-      border-radius: 10px;
-      padding: 16px;
-      font-size: 0.82rem;
-      line-height: 1.65;
-      color: #bbb;
-      flex: 1;
+    /* ── Claude input UI box ── */
+    .claude-input {
+      background: #1a1a1a;
+      border-radius: 14px;
+      padding: 14px 14px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      cursor: pointer;
+      transition: background 0.15s;
     }
 
-    .card-footer {
+    .claude-input:hover {
+      background: #222;
+    }
+
+    .prompt-text {
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: #d0d0d0;
+      min-height: 90px;
+    }
+
+    /* ── Toolbar at bottom of input box ── */
+    .toolbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 4px;
     }
 
-    .model-tag {
-      font-size: 0.7rem;
-      color: #444;
-    }
-
-    .copy-btn {
+    .toolbar-left {
       display: flex;
       align-items: center;
-      gap: 6px;
-      background: #1e1e1e;
-      border: 1px solid #2e2e2e;
-      border-radius: 8px;
-      color: #999;
-      font-size: 0.75rem;
-      font-weight: 500;
+      gap: 10px;
+    }
+
+    .tool-btn {
+      background: none;
+      border: none;
+      padding: 0;
       cursor: pointer;
-      padding: 6px 12px;
-      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      color: #666;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s;
     }
 
-    .copy-btn:hover {
-      background: #2a2a2a;
-      color: #f0f0f0;
-      border-color: #444;
+    .tool-btn:hover { color: #aaa; }
+
+    .tool-btn svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    .copy-btn.copied {
-      color: #6dde8c;
-      border-color: #2a4a2a;
-      background: #1a2a1a;
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .copy-btn svg {
+    .model-label {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.7rem;
+      color: #888;
+      white-space: nowrap;
+    }
+
+    .model-label svg {
+      width: 10px;
+      height: 10px;
+      stroke: #777;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .mic-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      color: #666;
+      display: flex;
+      align-items: center;
+    }
+
+    .mic-btn svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Orange send button */
+    .send-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #e05a00;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, transform 0.1s;
+      flex-shrink: 0;
+    }
+
+    .send-btn:hover { background: #c94f00; transform: scale(1.05); }
+
+    .send-btn.copied { background: #1a7a3a; }
+
+    .send-btn svg {
       width: 13px;
       height: 13px;
-      flex-shrink: 0;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     footer {
       text-align: center;
-      margin-top: 64px;
-      color: #333;
-      font-size: 0.8rem;
+      margin-top: 56px;
+      color: #aaa;
+      font-size: 0.78rem;
     }
   </style>
 </head>
@@ -172,49 +214,54 @@
 
 <header>
   <h1>Faceless Instagram Brand — 6 AI Prompts</h1>
-  <p>Use these in sequence to research, build, grow, and monetize a faceless brand-sponsored Instagram page.</p>
+  <p>Use these in order to research, build, grow, and monetize a faceless brand-sponsored Instagram page. Click the send button to copy.</p>
 </header>
 
 <div class="grid" id="grid"></div>
 
-<footer>Prompts via @itsalexanderlari &nbsp;·&nbsp; Model: Opus 4.8 High</footer>
+<footer>Prompts via @itsalexanderlari &nbsp;·&nbsp; Opus 4.8 High</footer>
 
 <script>
 const prompts = [
   {
-    label: "Niche Research",
+    label: "Prompt 1:",
     title: "This pulls a shortlist of high demand niches where brands already pay to advertise.",
     text: "Identify a curated set of high demand niches for a faceless, brand monetized Instagram page where sponsors actively pay premium rates for placement. Prioritize categories where advertiser spend is outpacing the number of established pages, and avoid oversaturated verticals entirely. For each niche, provide a concise analysis covering the type of brands that sponsor in that space, the typical pay range per sponsored post, the core demand driver fueling advertiser interest right now, and the content format best suited to faceless production. Weight your selections toward niches with repeatable content structures, strong save and share behavior, and a clear path to consistent brand inbound at volume."
   },
   {
-    label: "Page Identity",
+    label: "Prompt 2:",
     title: "This builds the entire page, name, bio and identity, so it reads like a real media brand.",
     text: "Using the niche selected above, architect a complete faceless Instagram page that reads as an established media brand rather than a personal account. Deliver five page name options that signal authority and editorial credibility, a bio under 150 characters engineered to attract brand sponsors and communicate positioning instantly, a logo style profile picture concept with no face, and a defined content pillar structure I can post against three to five times per week. Every element should make the page feel premium, trustworthy, and immediately ad ready to a brand evaluating it for a partnership."
   },
   {
-    label: "Content Creation",
+    label: "Prompt 3:",
     title: "This creates scroll stopping carousels designed to grow the page fast.",
     text: "Drawing from the chosen niche, develop a set of carousel concepts engineered for maximum saves, shares, and follower conversion on a faceless Instagram page. Each concept must be anchored in a proven retention framework, whether a curiosity gap, a contrarian angle, an authority led warning, or a status driven payoff. For every entry deliver a scroll stopping hook under ten words, a slide by slide structure that escalates tension and resolves on a transformation, and the dominant psychological trigger driving the engagement. Discard generic or surface level ideas entirely. Every concept should feel native to the niche and built to perform inside an oversaturated feed."
   },
   {
-    label: "Competitor Audit",
+    label: "Prompt 4:",
     title: "This shows you what's already working in your niche so you can model it instead of guessing.",
     text: "Conduct a systematic audit of the top performing faceless pages in this niche, the accounts consistently generating outsized reach and brand deals. Evaluate what each is executing differently across content angles, posting cadence, hook mechanics, visual identity, and the way they position themselves to sponsors. Distinguish between market wide patterns that signal proven tactics versus proprietary approaches unique to individual operators. Surface the exploitable gaps and overlooked opportunities in their current strategy, then distill it all into clear, actionable intelligence: what to replicate, what to deliberately avoid, and how to position a new page to win attention while capitalizing on validated demand."
   },
   {
-    label: "Brand Deals",
+    label: "Prompt 5:",
     title: "This closes brand deals at premium rates the moment they DM you.",
     text: "My faceless Instagram page is receiving inbound DMs from brands asking about sponsored placements. Write a three message reply sequence engineered to close them at premium rates without sounding desperate. The first message should position the page as paid ad inventory and qualify what the brand is looking for. The second should present a concrete sponsorship package with clear pricing and the specific reasons this audience converts for advertisers. The third should be a soft close that removes friction and locks in the commitment. The tone throughout should read as a business owner granting access to a valuable asset, never a creator asking for a favor."
   },
   {
-    label: "Autopilot System",
+    label: "Prompt 6:",
     title: "This puts the whole page on autopilot so it runs in under an hour a day.",
     text: "Build me a content and operations system that runs a faceless Instagram page on near total autopilot. Deliver a weekly content calendar mapped to my niche, a reusable prompt library that regenerates fresh carousels each week without starting from scratch, the best free tools for scheduling everything in advance, and a streamlined workflow I can execute in under an hour a day. Then outline how to replicate the entire system across multiple pages so the operation scales into a portfolio without scaling my time. The page should keep growing and earning whether or not I show up on any given day."
   }
 ];
 
-const copyIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
-const checkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+/* SVG icons */
+const plusSvg = `<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`;
+const trashSvg = `<svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>`;
+const chevronSvg = `<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>`;
+const micSvg = `<svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M19 10a7 7 0 0 1-14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>`;
+const arrowSvg = `<svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>`;
+const checkSvg = `<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>`;
 
 const grid = document.getElementById("grid");
 
@@ -222,30 +269,33 @@ prompts.forEach((p, i) => {
   const card = document.createElement("div");
   card.className = "card";
   card.innerHTML = `
-    <div class="card-header">
-      <span class="prompt-number">Prompt ${i + 1}</span>
-      <span class="badge">${p.label}</span>
-    </div>
+    <div class="prompt-label">${p.label}</div>
     <div class="card-title">${p.title}</div>
-    <div class="prompt-box" id="text-${i}">${p.text}</div>
-    <div class="card-footer">
-      <span class="model-tag">Opus 4.8 · High</span>
-      <button class="copy-btn" id="btn-${i}" onclick="copyPrompt(${i})">
-        ${copyIcon} Copy prompt
-      </button>
+    <div class="claude-input" onclick="copyPrompt(${i}, this)">
+      <div class="prompt-text">${p.text}</div>
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <button class="tool-btn" tabindex="-1">${plusSvg}</button>
+          <button class="tool-btn" tabindex="-1">${trashSvg}</button>
+        </div>
+        <div class="toolbar-right">
+          <span class="model-label">Opus 4.8 High ${chevronSvg}</span>
+          <button class="mic-btn" tabindex="-1">${micSvg}</button>
+          <button class="send-btn" id="send-${i}" tabindex="-1">${arrowSvg}</button>
+        </div>
+      </div>
     </div>
   `;
   grid.appendChild(card);
 });
 
-function copyPrompt(i) {
-  const text = prompts[i].text;
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.getElementById(`btn-${i}`);
-    btn.innerHTML = `${checkIcon} Copied`;
+function copyPrompt(i, el) {
+  navigator.clipboard.writeText(prompts[i].text).then(() => {
+    const btn = document.getElementById(`send-${i}`);
+    btn.innerHTML = checkSvg;
     btn.classList.add("copied");
     setTimeout(() => {
-      btn.innerHTML = `${copyIcon} Copy prompt`;
+      btn.innerHTML = arrowSvg;
       btn.classList.remove("copied");
     }, 2000);
   });
